@@ -1,0 +1,414 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>David Energy × Bushwick Daily — Campaign report</title><meta name="robots" content="noindex"></head><body><title>David Energy × Bushwick Daily — Campaign report</title>
+<style>
+  :root {
+    --ink: #14130f;
+    --ink-2: #6b685e;
+    --ink-3: #96938a;
+    --paper: #fdfcf9;
+    --card: #ffffff;
+    --line: #e8e6df;
+    --accent: #ffe000;
+    --accent-ink: #14130f;
+    --chip-up-bg: #eaf3e6;
+    --chip-up-fg: #2e6b1f;
+    --chip-down-bg: #f6ece3;
+    --chip-down-fg: #8a4b17;
+    --chip-flat-bg: #efeee8;
+    --chip-flat-fg: #5c594f;
+    --slot-bg: #fbf7e2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #f0eee7;
+      --ink-2: #a5a297;
+      --ink-3: #7c796e;
+      --paper: #161510;
+      --card: #1e1d17;
+      --line: #33322a;
+      --accent: #ffe000;
+      --accent-ink: #14130f;
+      --chip-up-bg: #24331e;
+      --chip-up-fg: #9fd188;
+      --chip-down-bg: #3a2d1e;
+      --chip-down-fg: #e0aa72;
+      --chip-flat-bg: #2a291f;
+      --chip-flat-fg: #b5b2a5;
+      --slot-bg: #2a2712;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #f0eee7;
+    --ink-2: #a5a297;
+    --ink-3: #7c796e;
+    --paper: #161510;
+    --card: #1e1d17;
+    --line: #33322a;
+    --accent: #ffe000;
+    --accent-ink: #14130f;
+    --chip-up-bg: #24331e;
+    --chip-up-fg: #9fd188;
+    --chip-down-bg: #3a2d1e;
+    --chip-down-fg: #e0aa72;
+    --chip-flat-bg: #2a291f;
+    --chip-flat-fg: #b5b2a5;
+    --slot-bg: #2a2712;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 16px/1.55 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px 72px; }
+
+  .masthead {
+    border-bottom: 4px solid var(--accent);
+    padding: 40px 0 20px;
+    margin-bottom: 8px;
+  }
+  .brandline {
+    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  }
+  .brand {
+    font-family: "Arial Black", "Helvetica Neue", sans-serif;
+    font-weight: 900; font-size: 15px; letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+  .brand .x { color: var(--ink-3); font-weight: 400; padding: 0 2px; }
+  .report-tag {
+    font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  h1 {
+    font-family: "Arial Black", "Helvetica Neue", sans-serif;
+    font-weight: 900; font-size: clamp(26px, 4.5vw, 40px);
+    line-height: 1.12; margin: 14px 0 10px; text-wrap: balance;
+  }
+  .dek { color: var(--ink-2); max-width: 62ch; margin: 0 0 6px; }
+  .meta { font-size: 13px; color: var(--ink-3); }
+
+  .summary {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    background: var(--line); border: 1px solid var(--line);
+    margin: 28px 0 8px;
+  }
+  @media (max-width: 640px) { .summary { grid-template-columns: repeat(2, 1fr); } }
+  .sum-cell { background: var(--card); padding: 16px 16px 14px; }
+  .sum-label {
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-2); margin-bottom: 6px;
+  }
+  .sum-num {
+    font-family: "Arial Black", "Helvetica Neue", sans-serif;
+    font-size: 26px; font-weight: 900; font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+  }
+  .sum-sub { font-size: 12px; color: var(--ink-3); margin-top: 4px; }
+  .summary-note { font-size: 12px; color: var(--ink-3); margin: 6px 0 0; }
+
+  section { margin-top: 44px; }
+  .sec-head { display: flex; align-items: baseline; gap: 12px; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+  .sec-kicker {
+    background: var(--accent); color: var(--accent-ink);
+    font-family: "Arial Black", sans-serif; font-weight: 900;
+    font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+    padding: 3px 8px;
+  }
+  h2 {
+    font-family: "Arial Black", "Helvetica Neue", sans-serif;
+    font-weight: 900; font-size: 20px; margin: 0;
+  }
+  .sec-when { margin-left: auto; font-size: 13px; color: var(--ink-3); white-space: nowrap; }
+
+  .grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--line); border: 1px solid var(--line); margin-top: 18px;
+  }
+  @media (max-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  .cell { background: var(--card); padding: 14px 16px 12px; }
+  .cell .k {
+    font-size: 11px; letter-spacing: .13em; text-transform: uppercase;
+    color: var(--ink-2); margin-bottom: 5px;
+  }
+  .cell .v {
+    font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums;
+  }
+  .cell .s { font-size: 12px; color: var(--ink-3); margin-top: 3px; }
+
+  .chip {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    padding: 2px 7px; border-radius: 2px; margin-left: 6px;
+    vertical-align: 3px; letter-spacing: .02em;
+  }
+  .chip.up { background: var(--chip-up-bg); color: var(--chip-up-fg); }
+  .chip.down { background: var(--chip-down-bg); color: var(--chip-down-fg); }
+  .chip.flat { background: var(--chip-flat-bg); color: var(--chip-flat-fg); }
+
+  .read { max-width: 68ch; color: var(--ink); margin: 18px 0 0; }
+  .read strong { font-weight: 700; }
+  .benchline { font-size: 13px; color: var(--ink-2); margin-top: 10px; max-width: 70ch; }
+
+  table {
+    width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 14px;
+  }
+  th {
+    text-align: left; font-size: 11px; letter-spacing: .13em;
+    text-transform: uppercase; color: var(--ink-2);
+    border-bottom: 1px solid var(--line); padding: 6px 10px 6px 0;
+    font-weight: 600;
+  }
+  td {
+    border-bottom: 1px solid var(--line); padding: 8px 10px 8px 0;
+    font-variant-numeric: tabular-nums;
+  }
+  td.num, th.num { text-align: right; padding-right: 0; padding-left: 10px; }
+  tr.hl td { background: var(--slot-bg); font-weight: 700; }
+  .tbl-wrap { overflow-x: auto; }
+
+  .slot {
+    background: var(--slot-bg); border: 1px dashed var(--accent);
+    padding: 18px 20px; margin-top: 18px;
+  }
+  .slot .k {
+    font-family: "Arial Black", sans-serif; font-weight: 900; font-size: 12px;
+    letter-spacing: .12em; text-transform: uppercase; margin-bottom: 6px;
+  }
+  .slot p { margin: 6px 0; font-size: 14px; max-width: 70ch; }
+
+  .foot {
+    margin-top: 56px; border-top: 1px solid var(--line); padding-top: 16px;
+    font-size: 12.5px; color: var(--ink-3);
+  }
+  .foot p { max-width: 78ch; margin: 6px 0; }
+  a { color: inherit; }
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="brandline">
+      <span class="brand">Bushwick Daily <span class="x">×</span> David Energy</span>
+      <span class="report-tag">Campaign report</span>
+    </div>
+    <h1>August 2026 campaign results</h1>
+    <p class="dek">One dedicated newsletter send, an Instagram carousel featuring Nitehawk
+      Cinema and Roberta's, and an Instagram story.</p>
+    <p class="meta">Flight: August 11–13, 2026 · Reported August 13, 1:45&nbsp;PM ET ·
+      Metrics pulled live from Mailchimp and the Instagram Graph API</p>
+  </header>
+
+  <section style="margin-top:28px;">
+    <div class="sec-head">
+      <span class="sec-kicker">Overview</span>
+      <h2>Campaign totals</h2>
+      <span class="sec-when">Email · feed post · story</span>
+    </div>
+    <div class="summary" style="margin-top:18px;">
+      <div class="sum-cell">
+        <div class="sum-label">Total views</div>
+        <div class="sum-num">22,916</div>
+        <div class="sum-sub">across all three placements</div>
+      </div>
+      <div class="sum-cell">
+        <div class="sum-label">Clicks to David Energy</div>
+        <div class="sum-num">91</div>
+        <div class="sum-sub">89 email + 2 story link taps</div>
+      </div>
+      <div class="sum-cell">
+        <div class="sum-label">Shares</div>
+        <div class="sum-num">249</div>
+        <div class="sum-sub">readers forwarded the feed post</div>
+      </div>
+      <div class="sum-cell">
+        <div class="sum-label">Inboxes reached</div>
+        <div class="sum-num">15,552</div>
+        <div class="sum-sub">plus 5,586 accounts on the feed post</div>
+      </div>
+    </div>
+    <p class="summary-note">Total views = 4,664 email opens + 15,275 feed-post views +
+      2,977 story impressions. Email opens were still accruing at report time (most recent
+      open: August 13, 1:41&nbsp;PM ET).</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-kicker">Placement 1</span>
+      <h2>Dedicated email newsletter</h2>
+      <span class="sec-when">Sent Aug 11, 10:45 AM ET</span>
+    </div>
+    <div class="grid">
+      <div class="cell">
+        <div class="k">Sent</div>
+        <div class="v">15,697</div>
+        <div class="s">145 bounced · 15,552 delivered</div>
+      </div>
+      <div class="cell">
+        <div class="k">Open rate</div>
+        <div class="v">30.0%<span class="chip flat">par</span></div>
+        <div class="s">4,664 unique opens</div>
+      </div>
+      <div class="cell">
+        <div class="k">Verified-human opens</div>
+        <div class="v">8.5%<span class="chip flat">par</span></div>
+        <div class="s">1,326 opens, proxy excluded</div>
+      </div>
+      <div class="cell">
+        <div class="k">Clicks</div>
+        <div class="v">89</div>
+        <div class="s">71 unique · 0.46% click rate</div>
+      </div>
+      <div class="cell">
+        <div class="k">Click destination</div>
+        <div class="v">100%</div>
+        <div class="s">every click went to davidenergy.com</div>
+      </div>
+      <div class="cell">
+        <div class="k">Unsubscribes</div>
+        <div class="v">59<span class="chip flat">par</span></div>
+        <div class="s">0.38% · normal for this list</div>
+      </div>
+    </div>
+    <p class="read"><strong>Subject line:</strong> “Free batteries are powering your favorite
+      Brooklyn spots.” The send was fully dedicated: one story, one destination. All 89 clicks
+      landed on the battery-backed-rates page, and they arrive UTM-tagged
+      (<code>utm_source=newsletter</code>, <code>utm_medium=email</code>), so David Energy's own
+      analytics can follow those sessions through to signups.</p>
+    <p class="benchline"><strong>Benchmark:</strong> the most recent comparable dedicated send on
+      this list (August 6, 15,825 recipients) did 30.3% opens / 8.9% verified-human / 209 unique
+      clicks at 0.55%. Opens matched it almost exactly. Clicks came in lower; that send carried a
+      $10 discount code with a same-week deadline, a stronger click trigger than a program
+      explainer.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-kicker">Placement 2</span>
+      <h2>Instagram feed carousel</h2>
+      <span class="sec-when">Posted Aug 11, 1:37 PM ET</span>
+    </div>
+    <div class="grid">
+      <div class="cell">
+        <div class="k">Accounts reached</div>
+        <div class="v">5,586</div>
+        <div class="s">to a 45.8k-follower account</div>
+      </div>
+      <div class="cell">
+        <div class="k">Views</div>
+        <div class="v">15,275</div>
+        <div class="s">2.7 views per account reached</div>
+      </div>
+      <div class="cell">
+        <div class="k">Shares</div>
+        <div class="v">249<span class="chip up">high</span></div>
+        <div class="s">2nd highest of last 5 carousels</div>
+      </div>
+      <div class="cell">
+        <div class="k">Likes</div>
+        <div class="v">134</div>
+        <div class="s">plus 3 comments</div>
+      </div>
+      <div class="cell">
+        <div class="k">Saves</div>
+        <div class="v">19</div>
+        <div class="s">bookmarked for later</div>
+      </div>
+      <div class="cell">
+        <div class="k">Engagement rate</div>
+        <div class="v">7.3%<span class="chip up">above avg</span></div>
+        <div class="s">408 interactions / reach</div>
+      </div>
+    </div>
+    <p class="read">The post told the program through two anchor tenants,
+      <strong>Nitehawk Cinema and Roberta's</strong>, with the 350+ NYC-business proof point and a
+      link-in-bio route. The standout number is <strong>shares: 249 people sent this post to
+      someone</strong>, one share for every 22 accounts reached. People rarely forward sponsored
+      posts; 249 is more shares than three of the four editorial carousels before it.</p>
+    <p class="benchline"><strong>Benchmark:</strong> the four prior feed carousels
+      (June 26 – August 6) reached 6,709–17,264 accounts (average 10,503) with an average 6.4%
+      engagement rate. This post reached fewer accounts than that average, but engaged a larger
+      share of the people it did reach, and out-shared three of the four.</p>
+    <div class="tbl-wrap">
+      <table>
+        <tr>
+          <th>Carousel</th><th class="num">Reach</th><th class="num">Views</th>
+          <th class="num">Shares</th><th class="num">Interactions</th><th class="num">Eng. rate</th>
+        </tr>
+        <tr class="hl">
+          <td>David Energy × Nitehawk/Roberta's (Aug 11)</td>
+          <td class="num">5,586</td><td class="num">15,275</td><td class="num">249</td>
+          <td class="num">408</td><td class="num">7.3%</td>
+        </tr>
+        <tr>
+          <td>Honey's natural wine fair (Aug 6)</td>
+          <td class="num">7,919</td><td class="num">20,541</td><td class="num">180</td>
+          <td class="num">570</td><td class="num">7.2%</td>
+        </tr>
+        <tr>
+          <td>Delivery-worker tips (Jul 29)</td>
+          <td class="num">10,119</td><td class="num">25,899</td><td class="num">25</td>
+          <td class="num">377</td><td class="num">3.7%</td>
+        </tr>
+        <tr>
+          <td>Chama Mama opening (Jul 22)</td>
+          <td class="num">17,264</td><td class="num">39,456</td><td class="num">675</td>
+          <td class="num">1,590</td><td class="num">9.2%</td>
+        </tr>
+        <tr>
+          <td>Macy's fireworks tickets (Jun 26)</td>
+          <td class="num">6,709</td><td class="num">16,442</td><td class="num">49</td>
+          <td class="num">141</td><td class="num">2.1%</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-kicker">Placement 3</span>
+      <h2>Instagram story</h2>
+      <span class="sec-when">Posted Aug 11</span>
+    </div>
+    <div class="grid">
+      <div class="cell">
+        <div class="k">Impressions</div>
+        <div class="v">2,977</div>
+        <div class="s">views during the 24-hour window</div>
+      </div>
+      <div class="cell">
+        <div class="k">Link taps</div>
+        <div class="v">2</div>
+        <div class="s">to the David Energy link</div>
+      </div>
+    </div>
+    <p class="read">The story added just under <strong>3,000 impressions</strong> on the
+      campaign's first day, on top of the carousel's reach. Stories rarely generate outbound
+      clicks; the clicks in this campaign came from the email, where the link was the entire
+      message.</p>
+    <p class="benchline"><strong>Source note:</strong> story metrics were read from Instagram's
+      in-app insights after the story's 24-hour window closed; stories leave the
+      externally-queryable API after expiry, so these two figures were captured manually rather
+      than pulled live like the rest of this report.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-kicker">Notes</span>
+      <h2>How to read these numbers</h2>
+    </div>
+    <div class="foot" style="margin-top:16px; border-top:none; padding-top:0;">
+      <p><strong>Two open rates are shown on purpose.</strong> Apple Mail auto-loads emails on
+        Apple's servers whether or not a person reads them, which inflates every sender's raw open
+        rate. 30.0% is the industry-standard figure (what every media kit quotes); 8.5% is the
+        floor after excluding those machine opens. The truth is between them, and the comparable
+        send is measured the same way on both.</p>
+      <p><strong>Sources:</strong> Mailchimp campaign report API (send 801bb26c1d) and Instagram
+        Graph API media insights, both queried August 13, 2026, ~1:45&nbsp;PM ET. Email opens
+        continue to accrue for days after send; Instagram numbers continue to move while the post
+        stays live. Carousel permalink:
+        <a href="https://www.instagram.com/p/Db6JE5vIAn3/">instagram.com/p/Db6JE5vIAn3</a>.</p>
+      <p><strong>Audience baseline:</strong> newsletter list ≈ 15.7k subscribers;
+        @bushwickdaily ≈ 45.8k followers, 3,434 lifetime posts.</p>
+    </div>
+  </section>
+</div>
+</body></html>
